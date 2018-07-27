@@ -1,6 +1,8 @@
 # PushNotification
 Firebase one to one push notifications on the web  using javascript  demo !! :-   https://youtu.be/d2g1HRa5MBs
 
+
+THIS GUIDE IS FOR BEGINNERS! LEARN FROM SCRATCH! FIREBASE PUSH NOTIFICATIONS ON THE WEB ...
 VIEW IT LIVE:- 
 https://smkh-pro.github.io/PushNotification/
 
