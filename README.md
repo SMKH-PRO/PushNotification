@@ -15,13 +15,7 @@ alt="Firebase push notification tutorial by kashan haider" width="500" height="3
 
 
 
-
-
-In this tutorial you willl learn how to push notifications on your website using firebase cloud functions , firebase database and firebase cloud messasging ! 
-
-
-Sorry for the low voice. it was a mic error,You can read subtitles! !!
-
+<hr>
 
 References:-
 
@@ -65,7 +59,4 @@ Commands to run:-
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-Need Any Help? 
-Contact Me :-  https://fb.me/SMKH.PRO
 
-My Github:- https://github.com/SMKH-PRO/
