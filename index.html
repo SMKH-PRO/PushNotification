@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="bootstrap/mdbs.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PushNotif</title>
+    
+    <link rel="stylesheet" href="index.css">
+
+    <script src="bootstrap/jquery.js"></script>
+    
+
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-functions.js"></script>    
+
+
+
+<script>
+
+     var config = {
+    apiKey: "AIzaSyBeTFOOsMXziKXoIe4ffybN8ZQiE2xPyLQ",
+    authDomain: "pushnotification-practice.firebaseapp.com",
+    databaseURL: "https://pushnotification-practice.firebaseio.com",
+    projectId: "pushnotification-practice",
+    storageBucket: "pushnotification-practice.appspot.com",
+    messagingSenderId: "425585757884"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script src="bootstrap/bootstrap.js"></script>
+</head>
+<body>
+    
+
+
+<div class="container">
+
+    <div class="fade" id="sendnotifdiv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!--Modal: Contact form-->
+        <div class="modal-dialog cascading-modal" role="document">
+    
+            <!--Content-->
+            <div class="modal-content">
+    
+                <!--Header-->
+                <div class="modal-header info-color white-text ">
+                    <h4 class="title">
+                        <i class="fa fa-upload"></i> <b>Push Notification</b><br>
+                        <p class="text-center" style="font-size:13px"><i class="fa fa-copyright"></i> By Kashan Haider, Saylani Batch 5</p></h4>
+                        
+                   
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+    
+                    <!-- Default input name -->
+                    <label for="YourName">Your Name</label>
+                    <input type="text" id="YourName" class="form-control form-control-sm">
+    
+                    <br>
+    
+                    <!-- Default input email -->
+                    <label for="YourID">YourID</label>
+                    <input type="text" id="YourID" disabled class="form-control form-control-sm">
+    
+                    <br>
+    
+                    <!-- Default input subject -->
+                 
+                    <select id="RecieverID" style="display:block !important; width:100%; height:37px; border-radius:8px; outline-width:0px" class="mdb-select initialized">
+                            <label>Reciever's ID: </label>
+                        <option value="" disabled selected>Select ID Of Reciever</option>
+                        
+                      
+                    </select>
+                    
+                    <br>
+    
+                    <!-- Default textarea message -->
+                    <label for="Message">Your message</label>
+                    <textarea type="text" id="Message" class="md-textarea form-control"></textarea>
+    
+                    <div class="text-center mt-4 mb-2">
+                        <button id="sendmsg"  class="btn btn-info">Send
+                            <i class="fa fa-send ml-2"></i>
+                        </button>
+                    </div>
+    
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+        <!--/Modal: Contact form-->
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="toast"><div id="img" ><img  id="ToastImg" class="toast-img" src="complete.png"></div><div id="desc">Notification has been sent !!</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<!--Modal: Login / Register Form-->
+<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Modal cascading tabs-->
+            <div class="modal-c-tabs">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fa fa-user-plus mr-1"></i> Register</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panels -->
+                <div class="tab-content">
+                    <!--Panel 7-->
+                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                        <!--Body-->
+                        <div class="modal-body mb-1">
+                            <div class="md-form form-sm mb-5">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input type="email" placeholder="Your Email" id="modalLRInput10" class="form-control form-control-sm validate">
+                                
+                            </div>
+
+                            <div class="md-form form-sm mb-4">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" id="modalLRInput11" placeholder="Your Password" class="form-control form-control-sm validate">
+                                
+                            </div>
+                            <div class="text-center mt-2">
+                                <button id="btn-login" class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
+                            </div>
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <div class="options text-center text-md-right mt-1">
+                                
+                                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <!--/.Panel 7-->
+
+                    <!--Panel 8-->
+                    <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="md-form form-sm mb-5">
+                                <i class="fa fa-user prefix"></i>
+                                <input type="text"   id="name" placeholder="First Name" class="form-control form-control-sm validate">
+                                
+                            </div>
+                            <div class="md-form form-sm mb-5">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input type="email"  placeholder="Your Email" id="modalLRInput12" class="form-control form-control-sm validate">
+                            </div>
+
+                            <div class="md-form form-sm mb-5">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" id="modalLRInput13" placeholder="Your Password" class="form-control form-control-sm validate">
+                                
+                            </div>
+
+                            <div class="md-form form-sm mb-4">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" id="modalLRInput14" placeholder="Repeat Password" class="form-control form-control-sm validate">
+                                
+                            </div>
+
+                            <div class="text-center form-sm mt-2">
+                                <button id="signup-btn" class="btn btn-info">Sign up <i class="fa fa-sign-in ml-1"></i></button>
+                            </div>
+                            <br>
+                            
+
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <div class="options text-right">
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--/.Panel 8-->
+                </div>
+
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--Modal: Login / Register Form-->
+
+
+
+
+<script src="necessary.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
