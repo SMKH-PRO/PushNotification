@@ -57,6 +57,3 @@ Commands to run:-
 6.  firebase deploy --only functions 
 
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
